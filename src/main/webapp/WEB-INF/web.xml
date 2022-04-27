@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app>
+	<display-name>Banana Bacana</display-name>
+	
+	<servlet>
+		<servlet-name>cadastrar</servlet-name>
+		<servlet-class>banana.controller.cadastrarProdutoController</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>cadastrar</servlet-name>
+		<url-pattern>/cadastrarProduto</url-pattern>
+	</servlet-mapping>
+</web-app>
