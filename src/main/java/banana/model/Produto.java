@@ -1,5 +1,7 @@
 package banana.model;
 
+import banana.dao.ProdutoDao;
+
 public class Produto {
 
 	private int idProduto;
@@ -69,7 +71,7 @@ public class Produto {
 	}
 	
 	public void salvar() {
-		System.out.println("[BANANA]: Salvo!");
+		new ProdutoDao().cadastrarProduto(this);
 	}
 	
 }
