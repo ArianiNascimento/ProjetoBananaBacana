@@ -65,10 +65,10 @@ public class cadastrarProdutoController extends HttpServlet {
 		mensagem = "Produto cadastrado com sucesso!";
 		request.setAttribute("mensagem", mensagem);
 		dispatcher.forward(request, response);
-		} else 
+		} else { 
 			mensagem = "Os campos precisam ser preenchidos!";
-
-	request.setAttribute("mensagem", mensagem);
-	dispatcher.forward(request, response);
-	}
+			request.setAttribute("mensagem", mensagem);
+			dispatcher.forward(request, response);
+			}
+		}
 }

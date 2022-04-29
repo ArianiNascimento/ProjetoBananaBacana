@@ -18,7 +18,7 @@
 		</ul>
 	</nav>
 	<main class="bananaMain">
-		<form action="" method="post" class="bananaForm">
+		<form action="buscarProdutos" method="post" class="bananaForm">
 			<div>
 				<label><strong>Busca pela Descrição:</strong></label><input type="text"
 					name="descricao">

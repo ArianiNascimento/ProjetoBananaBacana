@@ -1,5 +1,7 @@
 package banana.model;
 
+import java.util.ArrayList;
+
 import banana.dao.ProdutoDao;
 
 public class Produto {
@@ -74,4 +76,7 @@ public class Produto {
 		new ProdutoDao().cadastrarProduto(this);
 	}
 	
+	public ArrayList<Produto> buscarProdutosPorDescricao(String descricao) {
+		return new ProdutoDao().BuscarProdutoPorDescricao(descricao);
+	}
 }

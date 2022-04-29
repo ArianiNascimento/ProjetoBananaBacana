@@ -2,6 +2,8 @@ package banana.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
 
 import banana.model.Produto;
 
@@ -46,4 +48,57 @@ public class ProdutoDao {
 			}
 		}
 	}
+	
+	public ArrayList<Produto> BuscarProdutoPorDescricao(String descricao) {
+		
+		String sql = "SELECT * FROM PRODUTO WHERE descricao LIKE '%" + descricao + "%'";
+		ResultSet rs = null;
+		Connection conn = null;
+		PreparedStatement pStatement = null;
+		Produto produto = null;		
+		ArrayList<Produto> produtos = null;
+		
+		try {
+			
+			conn = new MySqlConnection().getConnection();
+			pStatement = conn.prepareStatement(sql); 
+			rs = pStatement.executeQuery();
+			
+			if (rs != null) {
+				produtos = new ArrayList<Produto>();
+				while (rs.next()) {
+					produto = new Produto();
+					produto.setIdProduto(rs.getInt("idProduto"));
+					produto.setDescricao(rs.getString("descricao"));
+					produto.setQuantidade(rs.getInt("quantidade"));
+					produto.setPreco(rs.getDouble("preco"));
+					produto.setOnLine(rs.getBoolean("onLine"));
+					produtos.add(produto);
+				}
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				
+				if (pStatement != null)
+					pStatement.close();
+				
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+			
+			try {
+				if (conn != null) 
+					conn.close();
+				
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		
+		return produtos;
+	}
 }
+

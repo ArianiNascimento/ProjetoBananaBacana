@@ -11,4 +11,14 @@
 		<servlet-name>cadastrar</servlet-name>
 		<url-pattern>/cadastrarProduto</url-pattern>
 	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>buscar</servlet-name>
+		<servlet-class>banana.controller.buscarProdutosController</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>buscar</servlet-name>
+		<url-pattern>/buscarProdutos</url-pattern>
+	</servlet-mapping>
 </web-app>
