@@ -1,7 +1,6 @@
 package banana.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -13,40 +12,43 @@ import javax.servlet.http.HttpServletResponse;
 import banana.model.Produto;
 
 /**
- * Servlet implementation class buscarProdutosController
+ * Servlet implementation class modificarProdutoController
  */
-@WebServlet("/buscarProdutosController")
-public class buscarProdutosController extends HttpServlet {
+@WebServlet("/modificarProdutoController")
+public class modificarProdutoController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public buscarProdutosController() {
+    public modificarProdutoController() {
         super();
+
     }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		this.doPost(request, response);
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
-		String descricao = request.getParameter("descricao");
 		
-		ArrayList<Produto> produtos = new Produto().buscarProdutosPorDescricao(descricao);
+		String apagar = request.getParameter("apagar");
+		String id = request.getParameter("id");
 		
-		request.setAttribute("produtos", produtos);
-		RequestDispatcher dispatcher = request.getRequestDispatcher("consultarProduto.jsp");
-		dispatcher.forward(request, response);
+		if (apagar != null && id != null) {
+			new Produto().excluir(Integer.valueOf(id));
+			RequestDispatcher dispatcher = request.getRequestDispatcher("consultarProduto.jsp");
+			request.setAttribute("mensagem", "Produto apagado com sucesso!");
+			dispatcher.forward(request, response);
+		}
 	}
 
 }

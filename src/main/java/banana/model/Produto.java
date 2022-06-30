@@ -76,6 +76,10 @@ public class Produto {
 		new ProdutoDao().cadastrarProduto(this);
 	}
 	
+	public void excluir(int idProduto) {
+		new ProdutoDao().ExcluirProduto(idProduto);
+	}
+	
 	public ArrayList<Produto> buscarProdutosPorDescricao(String descricao) {
 		return new ProdutoDao().BuscarProdutoPorDescricao(descricao);
 	}
