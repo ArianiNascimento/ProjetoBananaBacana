@@ -80,6 +80,10 @@ public class Produto {
 		new ProdutoDao().ExcluirProduto(idProduto);
 	}
 	
+	public Produto buscarProdutoPorId(int idProduto) {
+		return new ProdutoDao().BuscarProdutoPorId(idProduto);
+	}
+	
 	public ArrayList<Produto> buscarProdutosPorDescricao(String descricao) {
 		return new ProdutoDao().BuscarProdutoPorDescricao(descricao);
 	}
